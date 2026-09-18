@@ -1,7 +1,8 @@
+import java.io.Serializable;
 
-public class LinkedList {
+public class LinkedList implements Serializable {
 	
-	class Node{
+	class Node implements Serializable{
 		Employee obj;
 		Node next;
 		
@@ -114,20 +115,95 @@ public class LinkedList {
 	}
 	
 	
-	void sortManager(Manager m) {
+	void sortManager() {
 		Node ptr=head;
-		Node temp=head.next;
+		
 		while(ptr!=null) {
-			if(ptr.obj instanceof Manager && temp.obj instanceof Manager) {
-				if(ptr.obj.name.compareTo(temp.obj.name)>0) {
-					Employee tempObj=ptr.obj;
-					ptr.obj=temp.obj;
-					temp.obj=tempObj;
+				Node temp=ptr.next;
+				while(temp!=null) {
+					if(ptr.obj instanceof Manager && temp.obj instanceof Manager) {
+						if(ptr.obj.name.compareTo(temp.obj.name)>0) {
+							Employee tempObj=ptr.obj;
+							ptr.obj=temp.obj;
+							temp.obj=tempObj;
+						}
+					}
+					temp=temp.next;
 				}
-			}
-			ptr=ptr.next;
-			temp=temp.next;
+				ptr=ptr.next;
+		}	
+	}
+	
+	void sortEngineer() {
+		Node ptr=head;
+		
+		while(ptr!=null) {
+				Node temp=ptr.next;
+				while(temp!=null) {
+					if(ptr.obj instanceof Engineer && temp.obj instanceof Engineer) {
+						if(ptr.obj.name.compareTo(temp.obj.name)>0) {
+							Employee tempObj=ptr.obj;
+							ptr.obj=temp.obj;
+							temp.obj=tempObj;
+						}
+					}
+					temp=temp.next;
+				}
+				ptr=ptr.next;
 		}
 		
+	}
+	
+	void sortSalesPerson() {
+		Node ptr=head;
+		
+		while(ptr!=null) {
+				Node temp=ptr.next;
+				while(temp!=null) {
+					if(ptr.obj instanceof SalesPerson && temp.obj instanceof SalesPerson) {
+						if(ptr.obj.name.compareTo(temp.obj.name)>0) {
+							Employee tempObj=ptr.obj;
+							ptr.obj=temp.obj;
+							temp.obj=tempObj;
+						}
+					}
+					temp=temp.next;
+				}
+				ptr=ptr.next;
+		}	
+	}
+	
+	void sortEmployeesAsc() {
+		Node ptr=head;
+		
+		while(ptr!=null) {
+				Node temp=ptr.next;
+				while(temp!=null) {
+					if(ptr.obj.name.compareTo(temp.obj.name)>0) {
+						Employee tempObj=ptr.obj;
+						ptr.obj=temp.obj;
+						temp.obj=tempObj;
+					}
+					temp=temp.next;
+				}
+				ptr=ptr.next;
+		}
+	}
+	
+	void sortEmployeesDesc() {
+		Node ptr=head;
+		
+		while(ptr!=null) {
+				Node temp=ptr.next;
+				while(temp!=null) {
+					if(ptr.obj.name.compareTo(temp.obj.name)<0) {
+						Employee tempObj=ptr.obj;
+						ptr.obj=temp.obj;
+						temp.obj=tempObj;
+					}
+				temp=temp.next;
+				}
+				ptr=ptr.next;
+		}
 	}
 }
